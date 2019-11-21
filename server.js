@@ -25,17 +25,16 @@ const server = http.createServer(function(req, res) {
             });
             req.on('end', () => {
                 let user = JSON.parse(jsonString);
-                let data;
+                let arrJson;
                 if (!fs.existsSync(LOCAL_DATABASE)) {
                   user.id = 1;
-                  data = [user];
+                  arrJson = [user];
                 } else {
-                  const json = require(`./${LOCAL_DATABASE}`)
-                  user.id = json.length + 1;
-                  json.push(user);
-                  data = json;
+                  arrJson = require(`./${LOCAL_DATABASE}`)
+                  user.id = arrJson.length + 1;
+                  arrJson.push(user);
                 }
-                fs.writeFileSync(LOCAL_DATABASE, JSON.stringify(data, null, 4))
+                fs.writeFileSync(LOCAL_DATABASE, JSON.stringify(arrJson, null, 4))
               })
         } else if(req.method == 'DELETE') {
             if (fs.existsSync(LOCAL_DATABASE)) {
