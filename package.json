@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Http server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Rachid",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  }
+}
